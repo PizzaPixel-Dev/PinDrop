@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="theme-color" content="#0f1923">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<title>PinDrop</title>
+	<link rel="manifest" href="/assets/manifest-DVMC1x5a.json">
+  <script type="module" crossorigin src="/assets/index-B3H_Vbw8.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-C8K1EcBL.css">
+</head>
+<body>
+<div id="app">
+
+	<header>
+		<h1>Pin<span>Drop</span></h1>
+		<button class="btn btn-secondary" id="export-btn" style="width:auto;padding:8px 14px;font-size:13px;">⬇ Exportar</button>
+	</header>
+
+	<!-- MAP -->
+	<div id="map-wrap">
+		<div id="map"></div>
+		<button id="center-btn" title="Centrar">🎯</button>
+		<button id="locate-btn" title="Mi ubicación">📍</button>
+	</div>
+
+	<!-- PANEL -->
+	<div id="panel">
+		<div id="tabs">
+			<button class="tab active" data-tab="save">GUARDAR</button>
+			<button class="tab" data-tab="list">MIS LUGARES</button>
+			<button class="tab" data-tab="backup">BACKUP</button>
+		</div>
+
+		<!-- SAVE TAB -->
+		<div class="tab-content active" id="tab-save">
+			<div id="coords-display">
+				<div class="dot"></div>
+				<input type="text" id="coords-text" placeholder="Tocá 📍 para obtener tu ubicación">
+			</div>
+			<label for="loc-name">NOMBRE DEL LUGAR</label>
+			<input type="text" id="loc-name" placeholder="Ej: Casa, Oficina, Plaza…">
+			<label for="loc-notes">NOTAS (opcional)</label>
+			<textarea id="loc-notes" placeholder="Descripción, referencias, recordatorio…"></textarea>
+			<div style="display: flex; gap: 10px;">
+				<button class="btn btn-primary" id="save-btn">Guardar ubicación</button>
+				<button class="btn btn-secondary" id="cancel-btn" style="flex: 1;">Cancelar</button>
+			</div>
+		</div>
+
+		<!-- LIST TAB -->
+		<div class="tab-content" id="tab-list">
+			<div id="location-list">
+				<div class="empty-state">
+					<div class="icon">🗺️</div>
+					<p>Todavía no guardaste ningún lugar.<br>Usá la pestaña <strong>GUARDAR</strong> para empezar.</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- BACKUP TAB -->
+		<div class="tab-content" id="tab-backup">
+			<div class="backup-stats">
+				<div class="stat-card">
+					<div class="stat-number" id="stat-count">0</div>
+					<div class="stat-label">LUGARES GUARDADOS</div>
+				</div>
+				<div class="stat-card">
+					<div class="stat-number" id="stat-backup">—</div>
+					<div class="stat-label">ÚLTIMO EXPORT</div>
+				</div>
+			</div>
+
+			<div class="info-box">
+				<strong>¿Cómo funciona el backup?</strong><br>
+				Exportá tus ubicaciones como JSON y subilo manualmente a Google Drive, OneDrive o cualquier nube. El backup automático sin servidor no es posible en una app web por restricciones de seguridad de[...]
+			</div>
+
+			<button class="btn btn-primary" id="export-btn-2" style="margin-bottom:12px">⬇ Exportar JSON</button>
+			<button class="btn btn-secondary" id="import-btn" style="margin-bottom:12px">⬆ Importar JSON</button>
+			<input type="file" id="import-file" accept=".json" style="display:none">
+			<button class="btn btn-danger" id="clear-btn">🗑 Borrar todos los datos</button>
+		</div>
+	</div>
+</div>
+
+<div id="toast"></div>
+
+</body>
+</html>
